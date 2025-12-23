@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lecture | GRACE</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #fff; color: #1a1a1a; line-height: 1.8; }
+        .serif { font-family: 'Playfair Display', serif; }
+        .text-roux { color: #A3432F; }
+        #progress-bar { position: fixed; top: 0; left: 0; height: 3px; background: #A3432F; z-index: 100; width: 0%; transition: width 0.1s; }
+        .dropcap::first-letter { font-family: 'Playfair Display', serif; float: left; font-size: 5rem; line-height: 1; padding-right: 1rem; color: #A3432F; font-weight: bold; }
+        ::selection { background: #A3432F; color: white; }
+    </style>
+</head>
+<body>
+
+    <div id="progress-bar"></div>
+
+    <nav class="fixed w-full z-50 bg-white/80 backdrop-blur-md border-b border-gray-50">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="lecons.html" class="flex items-center gap-2 text-[10px] font-bold tracking-widest uppercase hover:text-roux transition">
+                <i data-lucide="chevron-left" class="w-4 h-4"></i> Retour
+            </a>
+            <div id="nav-info" class="hidden md:block text-[10px] font-bold tracking-[0.3em] uppercase text-gray-400">
+                Chargement...
+            </div>
+            <button onclick="window.print()" class="text-gray-400 hover:text-black transition">
+                <i data-lucide="printer" class="w-4 h-4"></i>
+            </button>
+        </div>
+    </nav>
+
+    <article class="pt-40 pb-24 px-6">
+        <header class="max-w-3xl mx-auto text-center mb-20">
+            <span id="lesson-category" class="text-roux font-bold text-[10px] tracking-[0.4em] uppercase mb-6 block"></span>
+            <h1 id="lesson-title" class="text-5xl md:text-7xl serif mb-10 leading-tight italic"></h1>
+            
+            <div class="flex items-center justify-center gap-6 border-y border-gray-100 py-6">
+                <div class="text-left text-[9px] uppercase tracking-widest text-gray-400">
+                    <p class="font-bold">Status</p>
+                    <p class="text-sm font-medium text-black">Enseignement Complet</p>
+                </div>
+                <div class="w-[1px] h-8 bg-gray-100"></div>
+                <a href="#" class="flex items-center gap-2 bg-gray-50 hover:bg-roux hover:text-white transition-all px-4 py-2 rounded-full text-[10px] font-bold uppercase tracking-widest">
+                    <i data-lucide="download" class="w-3 h-3"></i> PDF
+                </a>
+            </div>
+        </header>
+
+        <div class="max-w-2xl mx-auto">
+            <div id="lesson-content" class="prose prose-lg prose-serif text-gray-700 leading-relaxed space-y-8 dropcap">
+            </div>
+
+            <footer class="mt-20 pt-10 border-t border-gray-100">
+                <div class="flex flex-col md:flex-row justify-between items-center gap-8">
+                    <div class="flex gap-4">
+                        <button class="w-10 h-10 border border-gray-100 rounded-full flex items-center justify-center hover:bg-blue-50 transition"><i data-lucide="facebook" class="w-4 h-4"></i></button>
+                        <button class="w-10 h-10 border border-gray-100 rounded-full flex items-center justify-center hover:bg-green-50 transition"><i data-lucide="message-circle" class="w-4 h-4"></i></button>
+                    </div>
+                    <a href="lecons.html" class="px-10 py-5 bg-[#1a1a1a] text-white rounded-full text-[10px] font-bold tracking-widest uppercase hover:bg-roux transition-all">
+                        Voir les autres leçons
+                    </a>
+                </div>
+            </footer>
+        </div>
+    </article>
+
+    <script>
+        // BASE DE DONNÉES DES LEÇONS
+        const lessons = {
+            "1": {
+                category: "Théologie Fondamentale",
+                title: "La Nature de la Divinité",
+                content: `<p>Comprendre l'essence même de celui qui a créé les cieux et la terre est le premier pas vers une foi inébranlable. À travers les âges, la divinité s'est révélée sous diverses formes, mais Son essence demeure immuable.</p>
+                          <h2 class="text-3xl serif text-black pt-8">I. L'Unité dans la Plénitude</h2>
+                          <p>Le mystère de la divinité ne réside pas dans une division, mais dans une manifestation...</p>
+                          <blockquote class="my-12 p-10 bg-[#fafafa] rounded-[2rem] border-l-4 border-[#A3432F] italic serif text-2xl text-gray-600">"Au commencement était la Parole, et la Parole était avec Dieu..."</blockquote>`
+            },
+            "2": {
+                category: "Prophétie",
+                title: "Le Signal du Temps du Soir",
+                content: `<p>Dans cette deuxième leçon, nous étudions les signes prophétiques. La lumière doit apparaître au temps du soir selon les écritures...</p>
+                          <h2 class="text-3xl serif text-black pt-8">I. Les Signes de la Fin</h2>
+                          <p>Tout comme la nature change de saison, les temps spirituels ont leurs propres signaux...</p>`
+            },
+            "3": {
+                category: "Vie Pratique",
+                title: "La Sanctification Quotidienne",
+                content: `<p>La marche chrétienne est un processus de mise à part. Ce n'est pas un événement unique, mais une vie vécue dans la présence de Dieu.</p>`
+            },
+            "4": {
+                category: "Histoire",
+                title: "Les Sept Âges de l'Église",
+                content: `<p>L'histoire de l'Église n'est pas fortuite. Elle suit un plan divin précis divisé en sept périodes distinctes, chacune avec son messager.</p>`
+            },
+            "5": {
+                category: "Promesse",
+                title: "Le Mystère de l'Enlèvement",
+                content: `<p>Le point culminant de la foi chrétienne est l'espérance du retour du Seigneur et la transformation des corps.</p>`
+            }
+        };
+
+        // RÉCUPÉRATION DE L'ID DANS L'URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const lessonId = urlParams.get('id') || "1";
+        const currentLesson = lessons[lessonId];
+
+        // AFFICHAGE DYNAMIQUE
+        if (currentLesson) {
+            document.getElementById('lesson-category').textContent = currentLesson.category;
+            document.getElementById('lesson-title').textContent = currentLesson.title;
+            document.getElementById('nav-info').textContent = currentLesson.title;
+            document.getElementById('lesson-content').innerHTML = currentLesson.content;
+            document.title = currentLesson.title + " | GRACE";
+        }
+
+        lucide.createIcons();
+
+        window.onscroll = function() {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById("progress-bar").style.width = scrolled + "%";
+        };
+    </script>
+</body>
+</html>

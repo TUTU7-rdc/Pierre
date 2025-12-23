@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lecture | GRACE</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body { font-family: 'Inter', sans-serif; line-height: 1.8; color: #1a1a1a; scroll-behavior: smooth; }
+        .serif { font-family: 'Playfair Display', serif; }
+        .article-content p { margin-bottom: 2rem; font-weight: 300; font-size: 1.15rem; color: #374151; text-align: justify; }
+        .article-content h2 { font-family: 'Playfair Display', serif; font-size: 2.2rem; margin: 3.5rem 0 1.5rem 0; color: #000; line-height: 1.2; }
+        .share-btn { transition: all 0.3s ease; }
+        .share-btn:hover { transform: translateY(-3px); opacity: 0.7; }
+    </style>
+</head>
+<body class="bg-white">
+
+    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-gray-100">
+        <div class="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="communaute.html" class="flex items-center gap-2 text-[10px] font-bold tracking-[0.2em] hover:text-orange-600 transition">
+                <i data-lucide="arrow-left" class="w-4 h-4"></i> RETOUR
+            </a>
+            <a href="index.html" class="text-xl serif font-bold tracking-tighter">Ministries</a>
+            <div class="hidden md:block text-[10px] font-bold tracking-widest text-gray-400 uppercase" id="nav-cat">LECTURE</div>
+        </div>
+    </nav>
+
+    <main class="pt-32 pb-24 px-6">
+        <article class="max-w-3xl mx-auto">
+            <header class="text-center mb-16">
+                <span id="art-cat" class="text-[10px] font-bold tracking-[0.4em] text-orange-600 uppercase mb-4 block"></span>
+                <h1 id="art-titre" class="text-4xl md:text-6xl serif mb-8 leading-[1.1]"></h1>
+                <div id="art-meta" class="text-gray-400 text-[10px] tracking-[0.2em] uppercase"></div>
+            </header>
+
+            <div id="art-image-container" class="mb-16"></div>
+
+            <div class="flex items-center gap-6 mb-12 border-y border-gray-100 py-6">
+                <span class="text-[10px] font-bold tracking-widest uppercase text-gray-400">Partager :</span>
+                <button onclick="share('facebook')" class="share-btn text-blue-600"><i data-lucide="facebook" class="w-5 h-5"></i></button>
+                <button onclick="share('twitter')" class="share-btn text-black"><i data-lucide="twitter" class="w-5 h-5"></i></button>
+                <button onclick="share('whatsapp')" class="share-btn text-green-500"><i data-lucide="message-circle" class="w-5 h-5"></i></button>
+            </div>
+
+            <div id="art-texte" class="article-content mb-24"></div>
+
+            <section class="border-t border-gray-200 pt-16">
+                <h3 class="serif text-3xl mb-8 text-center">Espace de discussion</h3>
+                <form class="space-y-4 mb-12" onsubmit="event.preventDefault(); alert('Merci pour votre commentaire, il est en cours de modération.'); this.reset();">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <input type="text" placeholder="Votre nom" required class="w-full px-6 py-4 bg-gray-50 rounded-xl focus:ring-1 focus:ring-black outline-none border-none text-sm">
+                        <input type="email" placeholder="Votre email" required class="w-full px-6 py-4 bg-gray-50 rounded-xl focus:ring-1 focus:ring-black outline-none border-none text-sm">
+                    </div>
+                    <textarea placeholder="Partagez votre pensée..." rows="4" required class="w-full px-6 py-4 bg-gray-50 rounded-xl focus:ring-1 focus:ring-black outline-none border-none text-sm"></textarea>
+                    <button type="submit" class="bg-black text-white px-8 py-4 rounded-full text-[10px] font-bold tracking-widest hover:bg-gray-800 transition w-full">PUBLIER LE COMMENTAIRE</button>
+                </form>
+            </section>
+        </article>
+    </main>
+
+    <footer class="bg-black text-white py-12 text-center">
+        <div class="text-xl serif mb-4">PIERRE MINISTRIES</div>
+        <p class="text-[10px] text-gray-500 tracking-[0.3em]">© 2025 - INSPIRER LE MONDE</p>
+    </footer>
+
+    <script>
+        const DATABASE = [
+            {
+                id: 1,
+                cat: "SAGESSE",
+                titre: "Trouver le silence dans le tumulte quotidien",
+                meta: "Écrit par Jean Baptiste • 5 MIN DE LECTURE",
+                image: "https://images.unsplash.com/photo-1504052434569-70ad5836ab65?auto=format&fit=crop&q=80",
+                texte: `
+                    <p>Le silence n'est pas seulement l'absence de bruit, c'est une présence profonde à soi-même. Dans notre monde hyper-connecté, nous avons oublié comment écouter notre propre voix intérieure.</p>
+                    <h2>L'importance de la déconnexion</h2>
+                    <p>Chaque notification, chaque email, chaque bruit urbain fragmente notre attention. Pour retrouver une clarté d'esprit, il est essentiel de s'accorder des moments de retrait total. C'est dans ce vide apparent que naissent les plus grandes inspirations.</p>
+                    <p>Il ne s'agit pas de fuir le monde, mais de s'y préparer. Un esprit calme est beaucoup plus résilient face aux épreuves quotidiennes qu'un esprit constamment stimulé par des écrans.</p>
+                    <h2>Comment pratiquer ?</h2>
+                    <p>Commencez par dix minutes le matin. Sans téléphone, sans musique, juste vous et votre respiration. Observez vos pensées passer comme des nuages sans vous y accrocher. C'est le début de la liberté intérieure.</p>
+                `
+            },
+            {
+                id: 2,
+                cat: "COMMUNAUTÉ",
+                titre: "La force du collectif",
+                meta: "Écrit par Pierre Tutu • 8 MIN DE LECTURE",
+                image: "https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&q=80",
+                texte: `
+                    <p>Nous ne sommes pas faits pour marcher seuls. La communauté est le terreau dans lequel notre spiritualité peut s'enraciner et grandir.</p>
+                    <h2>Partager pour multiplier</h2>
+                    <p>Quand nous partageons un témoignage ou une épreuve, nous ne nous contentons pas de parler : nous permettons aux autres de se reconnaître et de trouver la force de continuer. La vulnérabilité partagée devient alors notre plus grande force collective.</p>
+                    <p>Dans nos rencontres hebdomadaires, nous voyons des vies se transformer simplement par l'écoute et la bienveillance. C'est là que réside le véritable miracle de la fraternité.</p>
+                `
+            },
+            {
+                id: 3,
+                cat: "MÉDITATION",
+                titre: "L'art de la gratitude au réveil",
+                meta: "Écrit par Pierre Tutu. • 4 MIN DE LECTURE",
+                image: "https://media.thegospelcoalition.org/wp-content/uploads/sites/5/2023/03/15220355/do-revival-comes-1920x1080.jpg",
+                texte: `
+                    <p>La manière dont nous commençons nos premières 60 minutes de la journée détermine la couleur de tout le reste de notre journée.</p>
+                    <h2>Le muscle de la reconnaissance</h2>
+                    <p>La gratitude est comme un muscle. Plus nous l'entraînons, plus nous devenons capables de voir la beauté là où les autres voient des problèmes. Remercier pour le souffle, pour le toit au-dessus de nos têtes, pour le café chaud... ces petits riens sont en réalité les piliers de notre bonheur.</p>
+                `
+            }
+        ];
+
+        function initArticle() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const id = parseInt(urlParams.get('id'));
+            const article = DATABASE.find(a => a.id === id);
+
+            if (article) {
+                document.getElementById('art-cat').textContent = article.cat;
+                document.getElementById('nav-cat').textContent = article.cat;
+                document.getElementById('art-titre').textContent = article.titre;
+                document.getElementById('art-meta').textContent = article.meta;
+                document.getElementById('art-image-container').innerHTML = `
+                    <img src="${article.image}" class="w-full h-[300px] md:h-[500px] object-cover rounded-[2.5rem] shadow-xl">
+                `;
+                document.getElementById('art-texte').innerHTML = article.texte;
+                document.title = article.titre + " | GRACE";
+            } else {
+                window.location.href = 'communaute.html';
+            }
+            lucide.createIcons();
+        }
+
+        function share(platform) {
+            const url = encodeURIComponent(window.location.href);
+            const title = encodeURIComponent(document.getElementById('art-titre').textContent);
+            let shareUrl = '';
+            if(platform === 'facebook') shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
+            if(platform === 'twitter') shareUrl = `https://twitter.com/intent/tweet?text=${title}&url=${url}`;
+            if(platform === 'whatsapp') shareUrl = `https://api.whatsapp.com/send?text=${title}%20${url}`;
+            window.open(shareUrl, '_blank');
+        }
+
+        window.addEventListener('DOMContentLoaded', initArticle);
+    </script>
+</body>
+</html>

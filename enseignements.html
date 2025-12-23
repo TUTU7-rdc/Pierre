@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enseignements | GRACE</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #fff; color: #1a1a1a; }
+        .serif { font-family: 'Playfair Display', serif; }
+        .text-roux { color: #A3432F; }
+        .bg-roux { background-color: #A3432F; }
+        .type-pill.active { background-color: #000; color: #fff; border-color: #000; }
+        
+        /* Animation subtile pour la section leçons */
+        .formation-card {
+            background: linear-gradient(135deg, #ffffff 0%, #fcfcfc 100%);
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .formation-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 30px 60px -12px rgba(0,0,0,0.05);
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="w-full bg-white/80 backdrop-blur-md border-b border-gray-50 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-6 py-6 flex justify-between items-center">
+            <a href="index.html" class="text-2xl serif font-bold tracking-tighter">GRACE</a>
+            <div class="hidden md:flex space-x-8 text-[10px] font-bold tracking-[0.2em]">
+                <a href="index.html" class="hover:text-gray-400 transition">ACCUEIL</a>
+                <a href="enseignements.html" class="text-black underline underline-offset-8">ENSEIGNEMENTS</a>
+                <a href="communaute.html" class="hover:text-gray-400 transition">COMMUNAUTÉ</a>
+                <a href="bibliotheque.html" class="hover:text-gray-400 transition">BIBLIOTHÈQUE</a>
+                <a href="contact.html" class="hover:text-gray-400 transition">CONTACT</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="pt-20 pb-12 px-6 text-center">
+        <span class="text-[10px] tracking-[0.4em] text-roux font-bold uppercase mb-4 block">Ressources Spirituelles</span>
+        <h1 class="text-5xl md:text-7xl serif mb-6">Enseignements</h1>
+        <p class="text-gray-400 max-w-xl mx-auto font-light text-lg">Méditez la parole à travers nos cycles de formation, vidéos et podcasts.</p>
+    </header>
+
+    <section class="max-w-7xl mx-auto px-6 mb-24">
+        <div class="formation-card border border-gray-100 rounded-[3rem] p-8 md:p-16 flex flex-col md:flex-row items-center gap-12 relative overflow-hidden">
+            <div class="absolute top-[-10%] right-[-5%] text-[15rem] serif italic opacity-[0.02] select-none pointer-events-none">Foi</div>
+            
+            <div class="flex-1 z-10">
+                <div class="flex items-center gap-3 mb-6">
+                    <span class="px-3 py-1 bg-roux text-white text-[9px] font-bold tracking-widest uppercase rounded-full">Nouveau</span>
+                    <span class="text-[10px] font-bold tracking-[0.2em] text-gray-400 uppercase">Parcours d'étude</span>
+                </div>
+                <h2 class="text-4xl md:text-5xl serif mb-6 leading-tight">Les Fondements <br><span class="italic font-light text-gray-400 text-3xl md:text-4xl">de la Foi Chrétienne</span></h2>
+                <p class="text-gray-500 font-light text-lg mb-8 max-w-md leading-relaxed">Un cycle de 5 leçons interactives conçues pour structurer votre compréhension biblique et affermir vos racines.</p>
+                
+                <a href="lecons.html" class="inline-flex items-center gap-6 group">
+                    <span class="w-14 h-14 rounded-full bg-black text-white flex items-center justify-center group-hover:bg-roux transition-colors duration-500">
+                        <i data-lucide="arrow-right" class="w-6 h-6"></i>
+                    </span>
+                    <span class="text-xs font-bold tracking-[0.3em] uppercase border-b border-black pb-1 group-hover:text-roux group-hover:border-roux transition-all">Commencer le cycle</span>
+                </a>
+            </div>
+
+            <div class="flex-1 grid grid-cols-2 gap-4 z-10">
+                <div class="bg-white p-6 rounded-[2rem] shadow-sm border border-gray-50 flex flex-col items-center text-center">
+                    <i data-lucide="book-open" class="w-6 h-6 text-roux mb-3"></i>
+                    <span class="text-[10px] font-bold uppercase tracking-tighter">Lecture interactive</span>
+                </div>
+                <div class="bg-white p-6 rounded-[2rem] shadow-sm border border-gray-50 flex flex-col items-center text-center mt-8">
+                    <i data-lucide="scroll" class="w-6 h-6 text-roux mb-3"></i>
+                    <span class="text-[10px] font-bold uppercase tracking-tighter">Notes d'étude</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="max-w-7xl mx-auto px-6 mb-12 flex flex-wrap justify-center gap-4">
+        <button class="type-pill active px-10 py-3 rounded-full border border-gray-200 text-[10px] font-bold tracking-widest transition-all" data-type="TOUS">TOUS LES MÉDIAS</button>
+        <button class="type-pill px-10 py-3 rounded-full border border-gray-200 text-[10px] font-bold tracking-widest transition-all" data-type="VIDEO">VIDÉOS</button>
+        <button class="type-pill px-10 py-3 rounded-full border border-gray-200 text-[10px] font-bold tracking-widest transition-all" data-type="AUDIO">PODCASTS AUDIO</button>
+    </div>
+
+    <main class="max-w-7xl mx-auto px-6 pb-24">
+        <div id="teachingGrid" class="grid grid-cols-1 md:grid-cols-2 gap-16">
+            </div>
+    </main>
+
+    <footer class="py-24 bg-gray-50 border-t border-gray-100 text-center">
+        <p class="text-[10px] tracking-[0.5em] text-gray-400 uppercase italic">"La foi vient de ce qu'on entend"</p>
+    </footer>
+
+    <script>
+        const TEACHINGS = [
+            {
+                id: 1,
+                type: "VIDEO",
+                titre: "La Sagesse dans le Silence",
+                desc: "Une exploration profonde sur l'importance de cultiver l'écoute intérieure dans un monde bruyant.",
+                url: "https://www.youtube.com/embed/kS5hzqrLOHo", 
+                duree: "15:20"
+            },
+            {
+                id: 2,
+                type: "AUDIO",
+                titre: "Le Pardon comme Force",
+                desc: "Découvrez comment le pardon n'est pas une faiblesse, mais la clé de la libération spirituelle.",
+                url: "audios/enseignement-1.mp3", 
+                duree: "22:45"
+            },
+            {
+                id: 3,
+                type: "VIDEO",
+                titre: "Bâtir sur le Roc",
+                desc: "Comment rester ferme et inébranlable malgré les tempêtes et les épreuves de la vie moderne.",
+                url: "https://www.youtube.com/embed/d3Ze9OFNAeY",
+                duree: "45:00"
+            }
+        ];
+
+        const teachingGrid = document.getElementById('teachingGrid');
+        const filterBtns = document.querySelectorAll('.type-pill');
+
+        function renderTeachings(filter = "TOUS") {
+            const filtered = filter === "TOUS" 
+                ? TEACHINGS 
+                : TEACHINGS.filter(t => t.type === filter);
+
+            teachingGrid.innerHTML = filtered.map(item => `
+                <div class="group flex flex-col">
+                    <div class="mb-8 overflow-hidden rounded-[2.5rem] bg-gray-100 shadow-sm transition-transform duration-700 hover:shadow-2xl">
+                        ${item.type === 'VIDEO' ? `
+                            <div class="aspect-video">
+                                <iframe src="${item.url}" class="w-full h-full" frameborder="0" allowfullscreen></iframe>
+                            </div>
+                        ` : `
+                            <div class="aspect-video flex flex-col items-center justify-center p-12 bg-white border border-gray-100">
+                                <div class="w-20 h-20 bg-gray-50 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500">
+                                    <i data-lucide="headphones" class="w-8 h-8 text-roux"></i>
+                                </div>
+                                <audio controls class="w-full max-w-xs h-10">
+                                    <source src="${item.url}" type="audio/mpeg">
+                                </audio>
+                            </div>
+                        `}
+                    </div>
+                    <div class="px-4">
+                        <div class="flex items-center gap-4 mb-4">
+                            <span class="text-[9px] font-bold tracking-[0.3em] text-roux uppercase">${item.type}</span>
+                            <div class="w-1 h-1 bg-gray-300 rounded-full"></div>
+                            <span class="text-[9px] text-gray-400 font-bold uppercase">${item.duree} MIN</span>
+                        </div>
+                        <h3 class="text-3xl serif mb-4 group-hover:text-roux transition-colors duration-300">${item.titre}</h3>
+                        <p class="text-gray-500 font-light leading-relaxed max-w-md">${item.desc}</p>
+                    </div>
+                </div>
+            `).join('');
+            
+            lucide.createIcons();
+        }
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                renderTeachings(btn.getAttribute('data-type'));
+            });
+        });
+
+        window.addEventListener('DOMContentLoaded', () => renderTeachings());
+    </script>
+</body>
+</html>

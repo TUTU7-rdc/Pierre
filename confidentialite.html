@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confidentialité | GRACE</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #fff; color: #1a1a1a; }
+        .serif { font-family: 'Playfair Display', serif; }
+        .text-roux { color: #A3432F; }
+        .bg-roux { background-color: #A3432F; }
+        
+        /* Style pour les listes personnalisées */
+        .policy-list li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+        .policy-list li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0.6rem;
+            width: 6px;
+            height: 6px;
+            background-color: #A3432F;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-gray-50">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-2xl serif font-bold tracking-tighter">GRACE</a>
+            <a href="index.html" class="text-[10px] font-bold tracking-[0.3em] uppercase border-b border-black pb-1 hover:text-roux transition">Fermer</a>
+        </div>
+    </nav>
+
+    <main class="pt-40 pb-24 px-6">
+        <div class="max-w-3xl mx-auto">
+            
+            <header class="mb-20">
+                <div class="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-orange-50 mb-6">
+                    <i data-lucide="lock" class="text-roux w-3 h-3"></i>
+                    <span class="text-[9px] font-bold tracking-[0.3em] uppercase text-roux">Protection des données</span>
+                </div>
+                <h1 class="text-5xl md:text-6xl serif mb-6">Politique de <br><span class="italic text-gray-400 font-light">Confidentialité</span></h1>
+                <p class="text-gray-500 font-light leading-relaxed text-lg">
+                    Votre vie privée est sacrée. Cette page détaille comment nous protégeons vos informations personnelles au sein de la communauté GRACE.
+                </p>
+            </header>
+
+            <div class="space-y-16 text-gray-600 leading-relaxed font-light">
+                
+                <section>
+                    <h2 class="text-2xl serif text-black mb-6">1. Collecte des informations</h2>
+                    <p class="mb-4">Nous collectons des informations lorsque vous interagissez avec notre plateforme, notamment :</p>
+                    <ul class="policy-list">
+                        <li>Lors de votre inscription aux enseignements ou séminaires.</li>
+                        <li>Lorsque vous effectuez un don (via nos prestataires sécurisés).</li>
+                        <li>Via les formulaires de contact ou de demande de prière.</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2 class="text-2xl serif text-black mb-6">2. Utilisation des informations</h2>
+                    <p class="mb-4">Toute information que nous recueillons peut être utilisée pour :</p>
+                    <ul class="policy-list">
+                        <li>Personnaliser votre expérience et répondre à vos besoins spirituels.</li>
+                        <li>Améliorer notre site web et nos ressources numériques.</li>
+                        <li>Vous envoyer des actualités importantes (Annonces, événements).</li>
+                        <li>Traiter vos contributions et dons.</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <div class="p-8 bg-gray-50 rounded-[2rem] border border-gray-100">
+                        <h2 class="text-2xl serif text-black mb-6">3. Protection des informations</h2>
+                        <p>
+                            Nous mettons en œuvre une variété de mesures de sécurité pour préserver la sécurité de vos informations personnelles. Nous utilisons un cryptage à la pointe de la technologie pour protéger les informations sensibles transmises en ligne. 
+                            <br><br>
+                            <strong>Nous ne vendons, n'échangeons et ne transférons pas vos informations personnelles identifiables à des tiers.</strong>
+                        </p>
+                    </div>
+                </section>
+
+                <section>
+                    <h2 class="text-2xl serif text-black mb-6">4. Vos Droits (RGPD)</h2>
+                    <p>
+                        Conformément à la réglementation européenne, vous disposez d'un droit d'accès, de rectification, de portabilité et de suppression de vos données. Vous pouvez également vous opposer au traitement de vos données à tout moment en nous contactant.
+                    </p>
+                </section>
+
+                <section class="pt-12 border-t border-gray-100 text-center">
+                    <p class="text-sm mb-4">Pour toute question concernant cette politique :</p>
+                    <a href="mailto:contact@grace.com" class="text-roux font-bold tracking-widest text-xs uppercase border-b border-roux pb-1">contact@grace.com</a>
+                </section>
+
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="py-12 bg-white text-center">
+        <p class="text-[9px] tracking-[0.5em] text-gray-400 uppercase italic">"La vérité vous rendra libres"</p>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

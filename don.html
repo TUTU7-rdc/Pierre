@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soutenir la Mission | GRACE</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #fff; }
+        .serif { font-family: 'Playfair Display', serif; }
+        .text-roux { color: #A3432F; }
+        .bg-roux { background-color: #A3432F; }
+        .border-roux { border-color: #A3432F; }
+        
+        .amount-card.active {
+            border-color: #A3432F;
+            background-color: #fdf8f6;
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-gray-50">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-2xl serif font-bold tracking-tighter">GRACE</a>
+            <a href="index.html" class="text-[10px] font-bold tracking-[0.3em] uppercase border-b border-black pb-1 hover:text-roux transition">Retour</a>
+        </div>
+    </nav>
+
+    <main class="pt-32 pb-24 px-6">
+        <div class="max-w-5xl mx-auto">
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-20">
+                
+                <div>
+                    <span class="text-[10px] tracking-[0.5em] uppercase text-roux font-bold mb-4 block">Générosité</span>
+                    <h1 class="text-5xl md:text-6xl serif mb-8 leading-tight">Soutenir la <br><span class="italic text-gray-400 font-light">Propagation.</span></h1>
+                    <p class="text-gray-500 font-light text-lg leading-relaxed mb-8">
+                        Chaque contribution permet de maintenir nos archives numériques, de soutenir nos actions sociales et d'étendre la portée de l'Évangile à travers le monde.
+                    </p>
+                    
+                    <div class="space-y-6 mt-12">
+                        <div class="flex items-start gap-4 p-6 bg-gray-50 rounded-2xl">
+                            <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-sm">
+                                <i data-lucide="shield-check" class="text-roux w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-sm">Don Sécurisé</h4>
+                                <p class="text-xs text-gray-400 mt-1">Vos informations sont chiffrées et protégées.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4 p-6 bg-gray-50 rounded-2xl">
+                            <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-sm">
+                                <i data-lucide="heart" class="text-roux w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-sm">Impact Direct</h4>
+                                <p class="text-xs text-gray-400 mt-1">100% de votre don est alloué aux projets de la communauté.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white border border-gray-100 p-8 md:p-12 rounded-[3rem] shadow-2xl">
+                    <h3 class="text-xl serif mb-8">Choisir un montant</h3>
+                    
+                    <div class="grid grid-cols-2 gap-4 mb-8">
+                        <button onclick="selectAmount(this, 20)" class="amount-card p-6 border border-gray-100 rounded-2xl text-center transition-all hover:border-roux">
+                            <span class="text-2xl font-light">20€</span>
+                        </button>
+                        <button onclick="selectAmount(this, 50)" class="amount-card p-6 border border-gray-100 rounded-2xl text-center transition-all hover:border-roux active">
+                            <span class="text-2xl font-light">50€</span>
+                        </button>
+                        <button onclick="selectAmount(this, 100)" class="amount-card p-6 border border-gray-100 rounded-2xl text-center transition-all hover:border-roux">
+                            <span class="text-2xl font-light">100€</span>
+                        </button>
+                        <div class="relative">
+                            <input type="number" placeholder="Autre" class="w-full h-full p-6 border border-gray-100 rounded-2xl text-center outline-none focus:border-roux transition-all">
+                        </div>
+                    </div>
+
+                    <div class="flex bg-gray-50 p-1 rounded-full mb-8">
+                        <button class="flex-1 py-3 text-[10px] font-bold tracking-widest uppercase bg-white rounded-full shadow-sm">Une fois</button>
+                        <button class="flex-1 py-3 text-[10px] font-bold tracking-widest uppercase text-gray-400">Mensuel</button>
+                    </div>
+
+                    <button class="w-full py-5 bg-[#1a1a1a] text-white rounded-full text-[11px] font-bold tracking-[0.2em] uppercase hover:bg-roux transition-all shadow-xl group">
+                        Faire un don maintenant
+                        <i data-lucide="arrow-right" class="inline-block ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                    </button>
+
+                    <p class="text-center text-[10px] text-gray-400 mt-8 uppercase tracking-widest">Paiement sécurisé par Stripe / PayPal</p>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <footer class="py-12 bg-white text-center border-t border-gray-50">
+        <p class="text-[9px] tracking-[0.5em] text-gray-400 uppercase">GRACE • Unité & Révélation • 2026</p>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+
+        function selectAmount(element, amount) {
+            // Retirer la classe active de tous les boutons
+            document.querySelectorAll('.amount-card').forEach(card => {
+                card.classList.remove('active');
+            });
+            // Ajouter à l'élément cliqué
+            element.classList.add('active');
+        }
+    </script>
+</body>
+</html>

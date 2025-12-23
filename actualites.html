@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actualités | GRACE</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #fff; scroll-behavior: smooth; }
+        .serif { font-family: 'Playfair Display', serif; }
+        .text-roux { color: #A3432F; }
+        .bg-roux { background-color: #A3432F; }
+        .hidden-article { display: none; }
+    </style>
+</head>
+<body>
+
+    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-gray-50">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-2xl serif font-bold tracking-tighter">GRACE</a>
+            <a href="index.html" class="text-[10px] font-bold tracking-[0.3em] uppercase border-b border-black pb-1">Accueil</a>
+        </div>
+    </nav>
+
+    <section id="news-list-view" class="pt-32 pb-24 px-6">
+        <div class="max-w-7xl mx-auto">
+            <header class="mb-20">
+                <span class="text-[10px] tracking-[0.5em] uppercase text-roux font-bold mb-4 block underline underline-offset-8">Journal de bord</span>
+                <h1 class="text-5xl md:text-7xl serif">Actualités de la <br><span class="italic text-gray-400 font-light">Communauté</span></h1>
+            </header>
+
+            <div id="news-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+                </div>
+        </div>
+    </section>
+
+    <section id="news-detail-view" class="hidden pt-32 pb-24 px-6">
+        <div class="max-w-4xl mx-auto">
+            <button onclick="closeNews()" class="flex items-center gap-3 text-[10px] font-bold tracking-[0.3em] uppercase mb-12 hover:text-roux transition">
+                <i data-lucide="arrow-left" class="w-4 h-4"></i> Retour aux actualités
+            </button>
+            <div id="article-content">
+                </div>
+        </div>
+    </section>
+
+    <script>
+        // 1. DONNÉES DES ACTUALITÉS
+        // Le format de date est YYYY-MM-DD
+        const NEWS_DATA = [
+            {
+                id: 1,
+                date: "2025-12-20", // Récent
+                cat: "Événement",
+                title: "Nuit de la Traversée : Préparez 2026",
+                thumb: "https://images.unsplash.com/photo-1514525253361-b83f859b73c0?auto=format&fit=crop&q=80",
+                content: "Nous vous invitons à une veillée de prière exceptionnelle le 31 décembre pour franchir le seuil de l'année nouvelle sous la protection divine..."
+            },
+            {
+                id: 2,
+                date: "2025-12-15", // Récent
+                cat: "Annonce",
+                title: "Inauguration de la Bibliothèque",
+                thumb: "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&q=80",
+                content: "Le nouvel espace de lecture numérique est désormais ouvert. Plus de 500 brochures PDF sont disponibles gratuitement..."
+            },
+            {
+                id: 3,
+                date: "2025-10-01", // Trop vieux (plus de 2 mois) -> disparaîtra
+                cat: "Social",
+                title: "Retour sur le séminaire d'été",
+                thumb: "https://images.unsplash.com/photo-1523580494863-6f3031224c94?auto=format&fit=crop&q=80",
+                content: "Ce contenu est ancien et devrait être caché automatiquement."
+            }
+        ];
+
+        // 2. LOGIQUE DE FILTRAGE PAR DATE (2 MOIS)
+        function renderNews() {
+            const grid = document.getElementById('news-grid');
+            const now = new Date();
+            const twoMonthsInMs = 60 * 24 * 60 * 60 * 1000;
+
+            const validNews = NEWS_DATA.filter(news => {
+                const newsDate = new Date(news.date);
+                return (now - newsDate) < twoMonthsInMs; // Garde si l'écart est < 60 jours
+            }).sort((a, b) => new Date(b.date) - new Date(a.date)); // Les plus récents en premier
+
+            grid.innerHTML = validNews.map(news => `
+                <article class="group cursor-pointer" onclick="openNews(${news.id})">
+                    <div class="relative overflow-hidden rounded-[2rem] aspect-[4/5] mb-8 shadow-sm">
+                        <img src="${news.thumb}" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700">
+                        <div class="absolute top-6 left-6">
+                            <span class="px-4 py-2 bg-white/90 backdrop-blur-md rounded-full text-[9px] font-bold tracking-widest uppercase text-roux">${news.cat}</span>
+                        </div>
+                    </div>
+                    <div>
+                        <span class="text-[9px] font-bold text-gray-400 uppercase tracking-[0.2em]">${new Date(news.date).toLocaleDateString('fr-FR', {day: 'numeric', month: 'long', year: 'numeric'})}</span>
+                        <h3 class="text-2xl serif mt-2 group-hover:text-roux transition-colors">${news.title}</h3>
+                        <p class="text-gray-500 font-light mt-4 text-sm line-clamp-2">Cliquez pour lire la suite...</p>
+                    </div>
+                </article>
+            `).join('');
+            
+            lucide.createIcons();
+        }
+
+        // 3. LOGIQUE D'AFFICHAGE DÉTAILLÉ (PAR ID)
+        function openNews(id) {
+            const article = NEWS_DATA.find(n => n.id === id);
+            if (!article) return;
+
+            document.getElementById('news-list-view').classList.add('hidden');
+            document.getElementById('news-detail-view').classList.remove('hidden');
+
+            document.getElementById('article-content').innerHTML = `
+                <img src="${article.thumb}" class="w-full h-[400px] object-cover rounded-[3rem] mb-12 shadow-2xl">
+                <div class="flex items-center gap-4 mb-6">
+                    <span class="text-roux font-bold text-[10px] tracking-widest uppercase">${article.cat}</span>
+                    <span class="text-gray-300">|</span>
+                    <span class="text-gray-400 text-[10px] uppercase font-bold tracking-widest">${article.date}</span>
+                </div>
+                <h2 class="text-4xl md:text-6xl serif mb-8">${article.title}</h2>
+                <div class="text-gray-600 font-light leading-[2] text-lg space-y-6">
+                    ${article.content}
+                </div>
+            `;
+            window.scrollTo(0, 0);
+        }
+
+        function closeNews() {
+            document.getElementById('news-list-view').classList.remove('hidden');
+            document.getElementById('news-detail-view').classList.add('hidden');
+            window.scrollTo(0, 0);
+        }
+
+        // Initialisation
+        window.onload = renderNews;
+    </script>
+</body>
+</html>

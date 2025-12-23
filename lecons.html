@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enseignements | GRACE</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #fff; color: #1a1a1a; }
+        .serif { font-family: 'Playfair Display', serif; }
+        .text-roux { color: #A3432F; }
+        .lesson-card { transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+        .lesson-card:hover { background-color: #fafafa; transform: translateX(10px); }
+    </style>
+</head>
+<body>
+
+    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-gray-50">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-2xl serif font-bold tracking-tighter">GRACE</a>
+            <a href="index.html" class="text-[10px] font-bold tracking-[0.3em] uppercase border-b border-black pb-1 hover:text-roux transition">Retour Accueil</a>
+        </div>
+    </nav>
+
+    <main class="pt-40 pb-24 px-6">
+        <div class="max-w-4xl mx-auto">
+            <header class="mb-24">
+                <span class="text-[10px] tracking-[0.5em] uppercase text-roux font-bold mb-4 block underline underline-offset-8">Cycle de formation</span>
+                <h1 class="text-5xl md:text-7xl serif mt-6">Les Fondements <br><span class="italic text-gray-400 font-light">de la Foi</span></h1>
+            </header>
+
+            <div class="space-y-4">
+                <div class="lesson-card p-8 border-b border-gray-100 flex flex-col md:flex-row justify-between items-center gap-8">
+                    <div class="flex gap-8 items-start w-full">
+                        <span class="text-roux serif text-2xl opacity-40 italic">01</span>
+                        <div>
+                            <span class="text-[9px] font-bold tracking-widest uppercase text-gray-400 mb-2 block">Théologie</span>
+                            <h2 class="text-2xl serif">La Nature de la Divinité</h2>
+                        </div>
+                    </div>
+                    <a href="reading.html?id=1" class="group flex items-center gap-4 px-8 py-4 bg-black text-white rounded-full text-[10px] font-bold tracking-widest uppercase hover:bg-roux transition-all whitespace-nowrap">
+                        Lire la leçon <i data-lucide="book-open" class="w-4 h-4"></i>
+                    </a>
+                </div>
+
+                <div class="lesson-card p-8 border-b border-gray-100 flex flex-col md:flex-row justify-between items-center gap-8">
+                    <div class="flex gap-8 items-start w-full">
+                        <span class="text-roux serif text-2xl opacity-40 italic">02</span>
+                        <div>
+                            <span class="text-[9px] font-bold tracking-widest uppercase text-gray-400 mb-2 block">Prophétie</span>
+                            <h2 class="text-2xl serif">Le Signal du Temps du Soir</h2>
+                        </div>
+                    </div>
+                    <a href="reading.html?id=2" class="group flex items-center gap-4 px-8 py-4 bg-black text-white rounded-full text-[10px] font-bold tracking-widest uppercase hover:bg-roux transition-all whitespace-nowrap">
+                        Lire la leçon <i data-lucide="book-open" class="w-4 h-4"></i>
+                    </a>
+                </div>
+
+                <div class="lesson-card p-8 border-b border-gray-100 flex flex-col md:flex-row justify-between items-center gap-8">
+                    <div class="flex gap-8 items-start w-full">
+                        <span class="text-roux serif text-2xl opacity-40 italic">03</span>
+                        <div>
+                            <span class="text-[9px] font-bold tracking-widest uppercase text-gray-400 mb-2 block">Vie Pratique</span>
+                            <h2 class="text-2xl serif">La Sanctification Quotidienne</h2>
+                        </div>
+                    </div>
+                    <a href="reading.html?id=3" class="group flex items-center gap-4 px-8 py-4 bg-black text-white rounded-full text-[10px] font-bold tracking-widest uppercase hover:bg-roux transition-all whitespace-nowrap">
+                        Lire la leçon <i data-lucide="book-open" class="w-4 h-4"></i>
+                    </a>
+                </div>
+
+                <div class="lesson-card p-8 border-b border-gray-100 flex flex-col md:flex-row justify-between items-center gap-8">
+                    <div class="flex gap-8 items-start w-full">
+                        <span class="text-roux serif text-2xl opacity-40 italic">04</span>
+                        <div>
+                            <span class="text-[9px] font-bold tracking-widest uppercase text-gray-400 mb-2 block">Histoire</span>
+                            <h2 class="text-2xl serif">Les Sept Âges de l'Église</h2>
+                        </div>
+                    </div>
+                    <a href="reading.html?id=4" class="group flex items-center gap-4 px-8 py-4 bg-black text-white rounded-full text-[10px] font-bold tracking-widest uppercase hover:bg-roux transition-all whitespace-nowrap">
+                        Lire la leçon <i data-lucide="book-open" class="w-4 h-4"></i>
+                    </a>
+                </div>
+
+                <div class="lesson-card p-8 border-b border-gray-100 flex flex-col md:flex-row justify-between items-center gap-8">
+                    <div class="flex gap-8 items-start w-full">
+                        <span class="text-roux serif text-2xl opacity-40 italic">05</span>
+                        <div>
+                            <span class="text-[9px] font-bold tracking-widest uppercase text-gray-400 mb-2 block">Promesse</span>
+                            <h2 class="text-2xl serif">Le Mystère de l'Enlèvement</h2>
+                        </div>
+                    </div>
+                    <a href="reading.html?id=5" class="group flex items-center gap-4 px-8 py-4 bg-black text-white rounded-full text-[10px] font-bold tracking-widest uppercase hover:bg-roux transition-all whitespace-nowrap">
+                        Lire la leçon <i data-lucide="book-open" class="w-4 h-4"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>lucide.createIcons();</script>
+</body>
+</html>

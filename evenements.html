@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Événements | GRACE</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #fff; color: #1a1a1a; }
+        .serif { font-family: 'Playfair Display', serif; }
+        .text-roux { color: #A3432F; }
+        .bg-roux { background-color: #A3432F; }
+        .border-roux { border-color: #A3432F; }
+        
+        .event-card:hover .event-image { transform: scale(1.05); }
+        .glass-effect { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(10px); }
+    </style>
+</head>
+<body>
+
+    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-gray-50">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-2xl serif font-bold tracking-tighter">GRACE</a>
+            <div class="flex gap-8 items-center">
+                <a href="actualites.html" class="text-[10px] font-bold tracking-[0.2em] uppercase text-gray-400 hover:text-roux transition">Actualités</a>
+                <a href="index.html" class="text-[10px] font-bold tracking-[0.2em] uppercase border-b-2 border-roux pb-1">Événements</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="pt-32 pb-20 px-6 bg-[#fafafa]">
+        <div class="max-w-7xl mx-auto">
+            <div class="bg-black rounded-[3rem] overflow-hidden relative min-h-[500px] flex items-center">
+                <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&q=80" 
+                     class="absolute inset-0 w-full h-full object-cover opacity-50 grayscale" alt="Main Event">
+                <div class="absolute inset-0 bg-gradient-to-r from-black via-black/40 to-transparent"></div>
+
+                <div class="relative z-10 p-12 md:p-20 max-w-2xl">
+                    <span class="px-4 py-2 bg-roux text-white text-[9px] font-bold tracking-[0.3em] uppercase rounded-full mb-8 inline-block">Prochain Grand Rendez-vous</span>
+                    <h1 class="text-5xl md:text-7xl serif text-white mb-6">Séminaire sur la <br><span class="italic font-light">Vie de l'Esprit</span></h1>
+                    <p class="text-gray-300 text-lg mb-10 font-light">Une immersion de trois jours pour redécouvrir la marche prophétique dans le temps du soir.</p>
+                    
+                    <div class="flex gap-8 text-white border-t border-white/10 pt-10">
+                        <div>
+                            <span class="text-3xl font-light block" id="days">00</span>
+                            <span class="text-[9px] uppercase tracking-widest text-gray-500">Jours</span>
+                        </div>
+                        <div>
+                            <span class="text-3xl font-light block" id="hours">00</span>
+                            <span class="text-[9px] uppercase tracking-widest text-gray-500">Heures</span>
+                        </div>
+                        <div>
+                            <span class="text-3xl font-light block" id="minutes">00</span>
+                            <span class="text-[9px] uppercase tracking-widest text-gray-500">Minutes</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex justify-between items-end mb-16">
+                <div>
+                    <span class="text-roux font-bold text-[10px] tracking-[0.4em] uppercase block mb-4">Agenda</span>
+                    <h2 class="text-4xl md:text-5xl serif">À venir <span class="italic text-gray-300">en 2026</span></h2>
+                </div>
+            </div>
+
+            <div class="space-y-6">
+                <div class="group flex flex-col md:flex-row gap-8 p-8 border border-gray-100 rounded-[2.5rem] hover:shadow-2xl hover:border-transparent transition-all duration-500 items-center">
+                    <div class="text-center md:w-32">
+                        <span class="text-4xl serif block text-roux">14</span>
+                        <span class="text-[10px] font-bold tracking-widest uppercase text-gray-400">Fév. 2026</span>
+                    </div>
+                    <div class="flex-1 text-center md:text-left">
+                        <h3 class="text-2xl serif mb-2 group-hover:text-roux transition-colors">Conférence : Le Signal de Minuit</h3>
+                        <p class="text-gray-500 font-light text-sm italic">Hôtel des Congrès, Paris • 18:00 - 21:00</p>
+                    </div>
+                    <div class="flex gap-4">
+                        <button class="px-8 py-4 bg-black text-white text-[10px] font-bold tracking-widest uppercase rounded-full hover:bg-roux transition-colors">Réserver</button>
+                    </div>
+                </div>
+
+                <div class="group flex flex-col md:flex-row gap-8 p-8 border border-gray-100 rounded-[2.5rem] hover:shadow-2xl hover:border-transparent transition-all duration-500 items-center">
+                    <div class="text-center md:w-32">
+                        <span class="text-4xl serif block text-roux">08</span>
+                        <span class="text-[10px] font-bold tracking-widest uppercase text-gray-400">Mars 2026</span>
+                    </div>
+                    <div class="flex-1 text-center md:text-left">
+                        <h3 class="text-2xl serif mb-2 group-hover:text-roux transition-colors">Journée d'Adoration Fraternelle</h3>
+                        <p class="text-gray-500 font-light text-sm italic">Sanctuaire GRACE • Toute la journée</p>
+                    </div>
+                    <div class="flex gap-4">
+                        <button class="px-8 py-4 bg-black text-white text-[10px] font-bold tracking-widest uppercase rounded-full hover:bg-roux transition-colors">Réserver</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-gray-50 px-6">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-12">
+            <div class="lg:col-span-1">
+                <h2 class="text-3xl serif mb-6">Nos services <br><span class="italic text-roux font-light">hebdomadaires</span></h2>
+                <p class="text-gray-500 font-light leading-relaxed">Des moments de communion réguliers pour fortifier la communauté et s'édifier mutuellement.</p>
+            </div>
+            
+            <div class="lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div class="p-10 bg-white rounded-[2rem] shadow-sm">
+                    <i data-lucide="sun" class="text-roux mb-6"></i>
+                    <h4 class="font-bold serif text-xl mb-2">Culte du Dimanche</h4>
+                    <p class="text-xs text-gray-400 tracking-widest uppercase mb-4">10:00 — 13:00</p>
+                    <p class="text-sm text-gray-500 font-light">Le rendez-vous principal de la semaine pour l'enseignement et l'adoration collective.</p>
+                </div>
+                <div class="p-10 bg-white rounded-[2rem] shadow-sm">
+                    <i data-lucide="moon" class="text-roux mb-6"></i>
+                    <h4 class="font-bold serif text-xl mb-2">Veillée du Mercredi</h4>
+                    <p class="text-xs text-gray-400 tracking-widest uppercase mb-4">19:00 — 21:00</p>
+                    <p class="text-sm text-gray-500 font-light">Une pause spirituelle en milieu de semaine dédiée à la prière profonde et à l'intercession.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-12 bg-white text-center border-t border-gray-50">
+        <p class="text-[9px] tracking-[0.5em] text-gray-400 uppercase">GRACE • Unité & Révélation • 2026</p>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+
+        // LOGIQUE DU COMPTE À REBOURS
+        const targetDate = new Date("January 30, 2026 00:00:00").getTime();
+
+        setInterval(() => {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+
+            document.getElementById("days").innerText = days < 10 ? "0" + days : days;
+            document.getElementById("hours").innerText = hours < 10 ? "0" + hours : hours;
+            document.getElementById("minutes").innerText = minutes < 10 ? "0" + minutes : minutes;
+        }, 1000);
+    </script>
+</body>
+</html>
