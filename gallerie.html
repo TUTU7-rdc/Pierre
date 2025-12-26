@@ -66,13 +66,13 @@
     <script>
         // 1. VOS PHOTOS (Ajoutez-en autant que vous voulez ici)
         const PHOTOS = [
-            { url: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?q=80", caption: "Séminaire International 2025" },
-            { url: "https://images.unsplash.com/photo-1534066548773-ec468205f25a?q=80", caption: "Moment d'Adoration" },
-            { url: "https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?q=80", caption: "Le Sanctuaire" },
-            { url: "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?q=80", caption: "Étude de la Parole" },
-            { url: "https://images.unsplash.com/photo-1523580494863-6f3031224c94?q=80", caption: "Communion Fraternelle" },
-            { url: "https://images.unsplash.com/photo-1489066353210-40ee3c1ce119?q=80", caption: "Éveil Spirituel" },
-            { url: "https://images.unsplash.com/photo-1514525253361-b83f859b73c0?q=80", caption: "Réjouissance" }
+            { url: "https://branham.org/azure/branham/c94b616a-7583-4c65-95b1-29f76e70b627.jpg", caption: "Le Christ à 33 ans" },
+            { url: "https://branham.org/azure/branham/0b19a1ba-c978-415f-9745-dafd507cb27e.jpg", caption: "L'ange du Seigneur" },
+            { url: "https://branham.org/azure/branham/073884ef-dd28-41d1-a7b8-33accbc478b2.jpg", caption: "La Nuée" },
+            { url: "https://branham.org/azure/branham/3f27064d-3224-4e16-8cc5-379069dd30c2.jpg", caption: "Frère Branham et son fils Joseph" },
+            { url: "https://branham.org/azure/branham/f6993ca2-2a43-4b63-8ff7-76b86a2b19eb.jpg", caption: "Frère Branham et Roy Roberson en voyage de chasse, au Wyoming" },
+            { url: "https://branham.org/azure/branham/da547295-b247-48d8-ad6d-7ba8abd1621c.jpg", caption: "Frère Branham et la Soeur Meda" },
+            { url: "https://branham.org/azure/branham/de882da8-ee8f-485c-9773-4a9274eea5fb.jpg", caption: "Frère Branham" }
         ];
 
         // 2. GÉNÉRATION DE LA GRILLE
@@ -123,4 +123,42 @@
         window.onload = initGallery;
     </script>
 </body>
+
+<section class="py-24 px-6 bg-gray-50/50 overflow-hidden relative">
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-px h-24 bg-gradient-to-b from-roux/0 to-roux/40"></div>
+        
+        <div class="max-w-4xl mx-auto text-center relative z-10">
+            <div class="mb-8 inline-block p-4 rounded-full bg-white shadow-sm border border-gray-100">
+                <i data-lucide="heart" class="w-6 h-6 text-roux fill-roux/10"></i>
+            </div>
+            
+            <h2 class="text-3xl md:text-5xl serif mb-8 leading-tight">
+                Chaque image est une <br>
+                <span class="italic font-light text-gray-500">prière qui demeure.</span>
+            </h2>
+            
+            <div class="space-y-6 text-gray-500 font-light leading-relaxed max-w-2xl mx-auto">
+                <p>
+                    Au-delà de la pellicule et des pixels, ces instants capturés témoignent de la fidélité de Dieu au milieu de Son peuple. Ils ne sont pas seulement des souvenirs, mais des autels dressés pour nous rappeler d'où nous venons et vers quelle Gloire nous marchons.
+                </p>
+                <p class="serif italic text-lg text-roux/80">
+                    "Car là où deux ou trois sont assemblés en mon nom, je suis au milieu d'eux."
+                </p>
+            </div>
+
+            <div class="mt-16">
+                <p class="text-[10px] tracking-[0.3em] uppercase text-gray-400 mb-6">Vous avez un moment à partager ?</p>
+                <a href="mailto:contact@votre-eglise.com" class="group relative inline-flex items-center gap-4 px-10 py-5 bg-black text-white rounded-full overflow-hidden transition-all hover:pr-14">
+                    <span class="relative z-10 font-medium text-sm tracking-wide">Contribuer à l'Album</span>
+                    <i data-lucide="arrow-right" class="w-4 h-4 relative z-10 transition-transform group-hover:translate-x-2"></i>
+                    <div class="absolute inset-0 bg-roux translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
+                </a>
+            </div>
+        </div>
+        
+        <div class="mt-24 text-center">
+            <p class="text-[9px] tracking-[0.4em] uppercase text-gray-300">Grace Community • Archives Spirituelles • 2025</p>
+        </div>
+    </section>
+
 </html>

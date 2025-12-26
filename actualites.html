@@ -1,142 +1,303 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Actualités | GRACE</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,700;1,700&display=swap"
+        rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
-        body { font-family: 'Inter', sans-serif; background-color: #fff; scroll-behavior: smooth; }
-        .serif { font-family: 'Playfair Display', serif; }
-        .text-roux { color: #A3432F; }
-        .bg-roux { background-color: #A3432F; }
-        .hidden-article { display: none; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fff;
+            color: #1a1a1a;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        .serif {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .text-roux {
+            color: #A3432F;
+        }
+
+        .bg-roux {
+            background-color: #A3432F;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .card-hover:hover {
+            border-color: #A3432F;
+            transform: translateY(-5px);
+        }
+
+        #news-list-view,
+        #news-detail-view {
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        /* Style pour le texte de l'article */
+        .article-body p {
+            margin-bottom: 1.8rem;
+            line-height: 1.8;
+            color: #374151;
+        }
     </style>
 </head>
+
 <body>
 
-    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-gray-50">
-        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+    <nav class="fixed w-full z-50 bg-white/80 backdrop-blur-xl border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
             <a href="index.html" class="text-2xl serif font-bold tracking-tighter">GRACE</a>
-            <a href="index.html" class="text-[10px] font-bold tracking-[0.3em] uppercase border-b border-black pb-1">Accueil</a>
+            <a href="index.html" class="group flex items-center gap-2 text-[10px] font-bold tracking-[0.3em] uppercase">
+                <i data-lucide="arrow-left" class="w-4 h-4 transition-transform group-hover:-translate-x-1"></i> Accueil
+            </a>
         </div>
     </nav>
 
-    <section id="news-list-view" class="pt-32 pb-24 px-6">
+    <main id="news-list-view" class="pt-40 pb-24 px-6">
         <div class="max-w-7xl mx-auto">
-            <header class="mb-20">
-                <span class="text-[10px] tracking-[0.5em] uppercase text-roux font-bold mb-4 block underline underline-offset-8">Journal de bord</span>
-                <h1 class="text-5xl md:text-7xl serif">Actualités de la <br><span class="italic text-gray-400 font-light">Communauté</span></h1>
+            <header class="mb-24 reveal" id="header-main">
+                <div class="flex items-center gap-4 mb-6">
+                    <div class="h-px w-12 bg-roux"></div>
+                    <span class="text-[10px] tracking-[0.6em] uppercase text-roux font-bold">Chroniques</span>
+                </div>
+                <h1 class="text-7xl md:text-9xl serif leading-tight">Le Journal <br><span
+                        class="italic text-gray-300 font-light">de Grâce</span></h1>
             </header>
 
-            <div id="news-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+            <div class="mb-32">
+                <h2
+                    class="text-[10px] font-bold tracking-[0.4em] uppercase text-gray-400 mb-12 flex items-center gap-4">
+                    <span>À la Une</span>
+                    <span class="h-px flex-grow bg-gray-100"></span>
+                </h2>
+                <div id="recent-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
                 </div>
+            </div>
+
+            <div id="archive-section">
+                <h2
+                    class="text-[10px] font-bold tracking-[0.4em] uppercase text-gray-400 mb-12 flex items-center gap-4">
+                    <span>Anciennes Actualités</span>
+                    <span class="h-px flex-grow bg-gray-100"></span>
+                </h2>
+                <div id="archive-list" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <section id="news-detail-view" class="hidden pt-40 pb-24 px-6 opacity-0">
+        <div class="max-w-3xl mx-auto">
+            <button onclick="closeNews()"
+                class="group flex items-center gap-3 text-[10px] font-bold tracking-[0.3em] uppercase mb-12 hover:text-roux transition">
+                <i data-lucide="chevron-left" class="w-4 h-4 transition-transform group-hover:-translate-x-1"></i>
+                Retour aux actualités
+            </button>
+
+            <div id="article-content" class="reveal">
+            </div>
         </div>
     </section>
 
-    <section id="news-detail-view" class="hidden pt-32 pb-24 px-6">
-        <div class="max-w-4xl mx-auto">
-            <button onclick="closeNews()" class="flex items-center gap-3 text-[10px] font-bold tracking-[0.3em] uppercase mb-12 hover:text-roux transition">
-                <i data-lucide="arrow-left" class="w-4 h-4"></i> Retour aux actualités
-            </button>
-            <div id="article-content">
-                </div>
-        </div>
-    </section>
+    <footer class="bg-gray-50 py-12 text-center border-t border-gray-100">
+        <p class="text-[9px] tracking-[0.5em] text-gray-400 uppercase">GRACE • ADORER EN ESPRIT ET EN VÉRITÉ</p>
+    </footer>
 
     <script>
-        // 1. DONNÉES DES ACTUALITÉS
-        // Le format de date est YYYY-MM-DD
+        // DONNÉES (Date pivot : 25 Déc 2025)
         const NEWS_DATA = [
             {
                 id: 1,
-                date: "2025-12-20", // Récent
+                date: "2025-12-24",
                 cat: "Événement",
                 title: "Nuit de la Traversée : Préparez 2026",
-                thumb: "https://images.unsplash.com/photo-1514525253361-b83f859b73c0?auto=format&fit=crop&q=80",
-                content: "Nous vous invitons à une veillée de prière exceptionnelle le 31 décembre pour franchir le seuil de l'année nouvelle sous la protection divine..."
+                thumb: "https://messagedutempsdelafin.org/wp-content/uploads/2015/04/colonne-400x400.jpg",
+                // Utilisation des backticks ` pour le multi-ligne
+                content: `
+        <p>“La lumière a frappé l’objectif de l’appareil-photo. L’être surnaturel était là”, a déclaré George J. Lacy, examinateur des documents contestés du Bureau du FBI des États-Unis. Dans toute l’histoire, c’est la première fois que la présence d’un être surnaturel fut scientifiquement prouvée. Quelle était cette Lumière surnaturelle? Qui ou quoi était sur l’estrade avec le prophète, ce soir-là, à Houston, au Texas?</p>
+        
+        <p>L’année 1950 commença d’une manière extraordinaire. La Colonne de Feu qui fut photographiée le 24 janvier fut photographiée deux autres fois cette année-là. De plus, la commission que l’Ange du Seigneur donna à Frère Branham fut de nombreuses fois confirmée de façon extraordinaire cette même année.</p>
+        
+        <p>La photographie fut rapidement remise à George J. Lacy, examinateur des documents contestés souvent engagé par le FBI des États-Unis. Il examina la photographie, ainsi que l’auditorium où la photo fut prise, et il établit l’authenticité de la photo par son rapport d’expert.</p>
+
+        <div class="relative w-full aspect-video rounded-3xl overflow-hidden shadow-lg my-10">
+            <iframe 
+                class="absolute inset-0 w-full h-full"
+                src="https://www.youtube.com/embed/CmAObMnxOMg?si=TGcnizxNVcs0mT2f" 
+                title="YouTube video player" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+            </iframe>
+        </div>
+    `
             },
             {
                 id: 2,
-                date: "2025-12-15", // Récent
+                date: "2025-12-22",
                 cat: "Annonce",
                 title: "Inauguration de la Bibliothèque",
-                thumb: "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&q=80",
-                content: "Le nouvel espace de lecture numérique est désormais ouvert. Plus de 500 brochures PDF sont disponibles gratuitement..."
+                thumb: "https://branham.org/azure/branham/f8d93847-93b8-40e8-93dd-73e32fc265d3.jpg",
+                content: "le nuage surnaturel est apparu au-dessus de l’Arizona. Les photos qui ont été prises de différentes régions de l’Arizona ont une grande importance pour nous, mais quand on pense à la prophétie qui a été accomplie, cela émeut nos âmes mêmes."
             },
             {
                 id: 3,
-                date: "2025-10-01", // Trop vieux (plus de 2 mois) -> disparaîtra
-                cat: "Social",
-                title: "Retour sur le séminaire d'été",
-                thumb: "https://images.unsplash.com/photo-1523580494863-6f3031224c94?auto=format&fit=crop&q=80",
-                content: "Ce contenu est ancien et devrait être caché automatiquement."
+                date: "2025-12-10",
+                cat: "Séminaire",
+                title: "Les 7 visions",
+                thumb: "https://branham.org/azure/branham/887b183d-4674-4941-9cc0-8500e660933c.jpg",
+                content: `
+                "Le weekend dernier a été marqué par une visitation particulière. Les enseignements sur l'adoration en esprit et en vérité ont transformé de nombreuses perspectives. "
+
+                <div class="relative w-full aspect-video rounded-3xl overflow-hidden shadow-lg my-10">
+            <iframe 
+                class="absolute inset-0 w-full h-full"
+                src="https://www.youtube.com/embed/WfgRavf-wd0?si=nsxKjy8K-uyjFL7a" 
+                title="YouTube video player" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+            </iframe>
+        </div>
+                `
+            },
+            {
+                id: 4,
+                date: "2025-12-20",
+                cat: "Communauté",
+                title: "Distribution Solidaire de Décembre",
+                thumb: "https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?auto=format&fit=crop&q=80",
+                content: "Grâce à votre générosité, nous avons pu accompagner 50 familles ce mois-ci. Merci de porter ainsi l'amour du Christ par vos actes concrets."
             }
         ];
 
-        // 2. LOGIQUE DE FILTRAGE PAR DATE (2 MOIS)
         function renderNews() {
-            const grid = document.getElementById('news-grid');
-            const now = new Date();
-            const twoMonthsInMs = 60 * 24 * 60 * 60 * 1000;
+            const recentGrid = document.getElementById('recent-grid');
+            const archiveList = document.getElementById('archive-list');
 
-            const validNews = NEWS_DATA.filter(news => {
-                const newsDate = new Date(news.date);
-                return (now - newsDate) < twoMonthsInMs; // Garde si l'écart est < 60 jours
-            }).sort((a, b) => new Date(b.date) - new Date(a.date)); // Les plus récents en premier
+            const now = new Date("2025-12-25");
+            const oneWeekMs = 7 * 24 * 60 * 60 * 1000;
 
-            grid.innerHTML = validNews.map(news => `
-                <article class="group cursor-pointer" onclick="openNews(${news.id})">
-                    <div class="relative overflow-hidden rounded-[2rem] aspect-[4/5] mb-8 shadow-sm">
-                        <img src="${news.thumb}" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700">
-                        <div class="absolute top-6 left-6">
-                            <span class="px-4 py-2 bg-white/90 backdrop-blur-md rounded-full text-[9px] font-bold tracking-widest uppercase text-roux">${news.cat}</span>
-                        </div>
+            const recentNews = NEWS_DATA.filter(n => (now - new Date(n.date)) < oneWeekMs);
+            const archivedNews = NEWS_DATA.filter(n => (now - new Date(n.date)) >= oneWeekMs);
+
+            // Rendu À la Une
+            recentGrid.innerHTML = recentNews.map(n => `
+                <article class="group cursor-pointer reveal" onclick="openNews(${n.id})">
+                    <div class="relative overflow-hidden rounded-[2rem] aspect-[4/5] mb-6 bg-gray-100 shadow-sm transition-all duration-700 group-hover:shadow-xl">
+                        <img src="${n.thumb}" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000">
+                        <div class="absolute inset-0 border-0 group-hover:border-[12px] border-white/20 transition-all duration-500 rounded-[2rem]"></div>
                     </div>
-                    <div>
-                        <span class="text-[9px] font-bold text-gray-400 uppercase tracking-[0.2em]">${new Date(news.date).toLocaleDateString('fr-FR', {day: 'numeric', month: 'long', year: 'numeric'})}</span>
-                        <h3 class="text-2xl serif mt-2 group-hover:text-roux transition-colors">${news.title}</h3>
-                        <p class="text-gray-500 font-light mt-4 text-sm line-clamp-2">Cliquez pour lire la suite...</p>
+                    <div class="px-2">
+                        <span class="text-[9px] font-bold text-roux uppercase tracking-[0.3em]">${n.cat}</span>
+                        <h3 class="text-2xl serif mt-2 leading-tight group-hover:text-roux transition-colors">${n.title}</h3>
+                        <p class="text-gray-400 font-light mt-3 text-xs tracking-wider">${formatDate(n.date)}</p>
                     </div>
                 </article>
             `).join('');
-            
+
+            // Rendu Archives (Design amélioré)
+            archiveList.innerHTML = archivedNews.map(n => `
+                <div class="group flex gap-5 p-5 rounded-3xl border border-gray-100 hover:border-roux/30 hover:bg-gray-50/50 transition-all duration-500 cursor-pointer reveal" onclick="openNews(${n.id})">
+                    <div class="w-24 h-24 rounded-2xl overflow-hidden flex-shrink-0 bg-gray-200">
+                        <img src="${n.thumb}" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700">
+                    </div>
+                    <div class="flex flex-col justify-center">
+                        <div class="flex items-center gap-3 mb-2">
+                            <span class="text-[8px] font-bold text-gray-300 uppercase tracking-widest">${formatDate(n.date)}</span>
+                            <span class="w-1 h-1 rounded-full bg-gray-200"></span>
+                            <span class="text-[8px] font-bold text-roux uppercase tracking-widest">${n.cat}</span>
+                        </div>
+                        <h4 class="text-lg serif leading-tight group-hover:text-roux transition-colors">${n.title}</h4>
+                    </div>
+                </div>
+            `).join('');
+
             lucide.createIcons();
+            handleScrollReveal();
         }
 
-        // 3. LOGIQUE D'AFFICHAGE DÉTAILLÉ (PAR ID)
         function openNews(id) {
             const article = NEWS_DATA.find(n => n.id === id);
             if (!article) return;
 
-            document.getElementById('news-list-view').classList.add('hidden');
-            document.getElementById('news-detail-view').classList.remove('hidden');
+            const listView = document.getElementById('news-list-view');
+            const detailView = document.getElementById('news-detail-view');
 
-            document.getElementById('article-content').innerHTML = `
-                <img src="${article.thumb}" class="w-full h-[400px] object-cover rounded-[3rem] mb-12 shadow-2xl">
-                <div class="flex items-center gap-4 mb-6">
-                    <span class="text-roux font-bold text-[10px] tracking-widest uppercase">${article.cat}</span>
-                    <span class="text-gray-300">|</span>
-                    <span class="text-gray-400 text-[10px] uppercase font-bold tracking-widest">${article.date}</span>
-                </div>
-                <h2 class="text-4xl md:text-6xl serif mb-8">${article.title}</h2>
-                <div class="text-gray-600 font-light leading-[2] text-lg space-y-6">
-                    ${article.content}
-                </div>
-            `;
-            window.scrollTo(0, 0);
+            listView.style.opacity = '0';
+            setTimeout(() => {
+                listView.classList.add('hidden');
+                detailView.classList.remove('hidden');
+                setTimeout(() => detailView.style.opacity = '1', 50);
+
+                document.getElementById('article-content').innerHTML = `
+                    <div class="mb-12">
+                        <span class="text-roux font-bold text-[10px] tracking-[0.4em] uppercase mb-4 block">${article.cat}</span>
+                        <h2 class="text-4xl md:text-6xl serif mb-6 leading-tight">${article.title}</h2>
+                        <span class="text-gray-400 text-xs tracking-widest uppercase">${formatDate(article.date)}</span>
+                    </div>
+                    <div class="w-full h-[450px] rounded-[2.5rem] overflow-hidden mb-16 shadow-lg">
+                        <img src="${article.thumb}" class="w-full h-full object-cover">
+                    </div>
+                    <div class="article-body font-normal text-gray-700 text-lg md:text-xl">
+                        <p>${article.content}</p>
+                        <p>Restez connectés à notre plateforme pour plus de mises à jour et que la paix du Seigneur vous accompagne.</p>
+                    </div>
+                `;
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }, 500);
         }
 
         function closeNews() {
-            document.getElementById('news-list-view').classList.remove('hidden');
-            document.getElementById('news-detail-view').classList.add('hidden');
-            window.scrollTo(0, 0);
+            const listView = document.getElementById('news-list-view');
+            const detailView = document.getElementById('news-detail-view');
+
+            detailView.style.opacity = '0';
+            setTimeout(() => {
+                detailView.classList.add('hidden');
+                listView.classList.remove('hidden');
+                setTimeout(() => listView.style.opacity = '1', 50);
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }, 500);
         }
 
-        // Initialisation
-        window.onload = renderNews;
+        function formatDate(d) {
+            return new Date(d).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
+        }
+
+        function handleScrollReveal() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) entry.target.classList.add('visible');
+                });
+            }, { threshold: 0.1 });
+            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        }
+
+        window.onload = () => {
+            renderNews();
+            document.getElementById('header-main').classList.add('visible');
+        };
     </script>
 </body>
+
 </html>
